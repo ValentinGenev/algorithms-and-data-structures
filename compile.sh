@@ -1,12 +1,19 @@
  #! /bin/sh
 
-filesToBuild=('main.c' 'basics/numbers.c')
+filesToBuild=(
+    'main.c'
+    'basic-algorithms/collection.c'
+    'basic-algorithms/number.c'
+    'basic-algorithms/search.c'
+)
 
+rm -rf build
 mkdir -p build
 cd build/
 
 for file in ${filesToBuild[@]}
 do
+    echo "compiling $file"
     gcc -Wall -c ../$file
 done
 

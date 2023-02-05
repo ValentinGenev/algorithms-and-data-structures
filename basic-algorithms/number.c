@@ -1,4 +1,4 @@
-#include "numbers.h"
+#include "number.h"
 #include <math.h>
 
 unsigned countDigitsInRealNumber(int number)
