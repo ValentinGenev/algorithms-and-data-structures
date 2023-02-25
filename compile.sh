@@ -3,7 +3,7 @@
 filesToBuild=(
     'main.c'
     'basic-algorithms/collection.c'
-    'basic-algorithms/number.c'
+    'basic-algorithms/sort.c'
     'basic-algorithms/search.c'
 )
 

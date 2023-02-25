@@ -1,41 +1,34 @@
-#include "basic-algorithms/number.h"
 #include "basic-algorithms/search.h"
+#include "basic-algorithms/sort.h"
 #include <stdio.h>
 
 int main(void)
 {
-    printf("countDigitsInRealNumber: %s\n",
-        countDigitsInRealNumber(4242) == 4 ? "works" : "doesn't work"
-    );
+    printf("---------- Starting main\n");
 
-    printf("countDigitsInNaturalNumbers: %s\n",
-        countDigitsInNaturalNumbers(-12.12345678) == 10 ?
-            "works" : "doesn't work"
-    );
+    int unsortedNumbers[] = {45, 126, 38, 114, 101, 50, 47, 7, 69, 22,
+                             118, 98, 29, 43, 131, 27, 33, 54, 88, 139, 130, 42, 89, 21, 1, 91, 52,
+                             58, 97, 138, 36, 65, 66, 17, 62, 60, 150, 109, 18, 57, 71, 90, 61, 74,
+                             125, 149, 113, 56, 124, 49, 146, 86, 44, 12, 129, 20, 19, 128, 39, 55,
+                             93, 143, 116, 37, 31, 70, 106, 87, 102, 132, 25, 6, 117, 140, 108, 122,
+                             103, 104, 16, 78, 40, 110, 136, 83, 92, 144, 94, 8, 76, 137, 77, 5, 13,
+                             141, 67, 48, 34, 147, 4, 35};
+    int numbersCount = sizeof unsortedNumbers / sizeof unsortedNumbers[0];
 
-    int divisionResult[2] = {};
-    calculateQuotientAndReminder(-21, 4, divisionResult);
-    printf(
-        "calculateQuotientAndReminder: %s\n",
-        divisionResult[0] == -5 && divisionResult[1] == -1 ?
-            "works" : "doesn't work"
-    );
 
-    printf("calculateDividend: %s\n",
-        calculateDividend(4, divisionResult[0], divisionResult[1]) == -21 ?
-            "works" : "doesn't work"
-    );
+    for (int i = 0; i < numbersCount; i++)
+    {
+        printf("%d, ", unsortedNumbers[i]);
+    }
+    printf("\n---------- %d\n", unsortedNumbers[numbersCount / 2]);
 
-    int sortedNumbers[] = {1, 4, 5, 6, 7, 8, 12, 13, 16, 17, 18, 19, 20, 21, 22, 25, 27, 29, 31, 33, 34, 35, 36, 37, 38, 39, 40, 42, 43, 44, 45, 47, 48, 49, 50, 52, 54, 55, 56, 57, 58, 60, 61, 62, 65, 66, 67, 69, 70, 71, 74, 76, 77, 78, 83, 86, 87, 88, 89, 90, 91, 92, 93, 94, 97, 98, 101, 102, 103, 104, 106, 108, 109, 110, 113, 114, 116, 117, 118, 122, 124, 125, 126, 128, 129, 130, 131, 132, 136, 137, 138, 139, 140, 141, 143, 144, 146, 147, 149, 150};
-    int numbersCount = sizeof sortedNumbers / sizeof sortedNumbers[0];
-    printf("binarySearchInNumbers: %s\n",
-        binarySearchInNumbers(sortedNumbers, 100, 0, numbersCount) == -1 ?
-            "works" : "doesn't work"
-    );
-    printf("binarySearchInNumbers: %s\n",
-        binarySearchInNumbers(sortedNumbers, 12, 0, numbersCount) == 6 ?
-            "works" : "doesn't work"
-    );
+
+    int sortedNumbers[numbersCount * 2];
+    quickSort(unsortedNumbers, numbersCount, numbersCount / 2, sortedNumbers);
+
+    // TODO: uncomment when done with the sorting
+    // printf("binarySearchInNumbers: %s\n",
+    //        binarySearchInNumbers(sortedNumbers, 100, 0, numbersCount) == -1 ? "works" : "doesn't work");
 
     return 0;
 }
