@@ -11,6 +11,8 @@ int *sliceArray(int array[], int start, int end, int *target)
     return target;
 }
 
+// TODO: research the following implementation:
+// https://rosettacode.org/wiki/Array_concatenation#C
 int *concatenateArrays(int array1[], int size1, int array2[], int size2,
                        int *target)
 {
