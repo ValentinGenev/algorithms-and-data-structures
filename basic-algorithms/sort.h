@@ -1,1 +1,1 @@
-int *quickSort(int array[], int length, int pivot, int *target[]);
+int *quickSort(int array[], int length, int pivot, int *target);

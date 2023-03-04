@@ -1,11 +1,16 @@
-#include "./collection.h"
 #include <stdio.h>
+#include <string.h>
 
-int *quickSort(int array[], int length, int pivot, int *target[])
+int *quickSort(int array[], int length, int pivot, int *target)
 {
-    int leftSide[length];
+    if (length < 2) {
+        return target;
+    }
+
+    int pivotArr[1] = {array[pivot]};
+    int leftSide[length - 1];
+    int rightSide[length - 1];
     int lsIndex = 0;
-    int rightSide[length];
     int rsIndex = 0;
 
     for (int i = 0; i < length; i++)
@@ -15,23 +20,18 @@ int *quickSort(int array[], int length, int pivot, int *target[])
             leftSide[lsIndex] = array[i];
             lsIndex++;
         }
-        else
+        else if (array[i] > array[pivot])
         {
             rightSide[rsIndex] = array[i];
             rsIndex++;
         }
     }
 
-    concatenateArrays(leftSide, lsIndex, rightSide, rsIndex, target);
+    quickSort(leftSide, lsIndex, lsIndex / 2, leftSide);
+    quickSort(rightSide, rsIndex, rsIndex / 2, rightSide);
 
-    // FIXME: not printing the same array as in the concatenateArrays method
-    for (int i = 0; i < length; i++)
-    {
-    printf("%d, ", target[i]);
-    }
-    printf("\n----------\n");
-
-    // TODO: right the base check
-
+    memcpy(target, leftSide, lsIndex * sizeof leftSide[0]);
+    memcpy(target + lsIndex, pivotArr, sizeof pivotArr[0]);
+    memcpy(target + lsIndex + 1, rightSide, rsIndex * sizeof rightSide[0]);
     return target;
 }

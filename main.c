@@ -15,20 +15,19 @@ int main(void)
                              141, 67, 48, 34, 147, 4, 35};
     int numbersCount = sizeof unsortedNumbers / sizeof unsortedNumbers[0];
 
-
-    for (int i = 0; i < numbersCount; i++)
-    {
-        printf("%d, ", unsortedNumbers[i]);
-    }
-    printf("\n---------- %d\n", unsortedNumbers[numbersCount / 2]);
-
-
-    int sortedNumbers[numbersCount * 2];
+    int sortedNumbers[numbersCount];
     quickSort(unsortedNumbers, numbersCount, numbersCount / 2, sortedNumbers);
 
-    // TODO: uncomment when done with the sorting
-    // printf("binarySearchInNumbers: %s\n",
-    //        binarySearchInNumbers(sortedNumbers, 100, 0, numbersCount) == -1 ? "works" : "doesn't work");
+    printf("---------- quickSort: ");
+    for (int i = 0; i < numbersCount; i++)
+    {
+        printf("%d, ", sortedNumbers[i]);
+    }
+    printf("\n");
+
+    int needle = 16;
+    printf("---------- binarySearchInNumbers: %d at position %d\n", needle,
+           binarySearchInNumbers(sortedNumbers, needle, 0, numbersCount));
 
     return 0;
 }
