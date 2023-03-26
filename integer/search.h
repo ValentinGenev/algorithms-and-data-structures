@@ -1,0 +1,1 @@
+int binarySearch(int stack[], int needle, int left, int right);

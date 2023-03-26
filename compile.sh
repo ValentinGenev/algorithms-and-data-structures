@@ -2,8 +2,9 @@
 
 filesToBuild=(
     'main.c'
-    'basic-algorithms/sort.c'
-    'basic-algorithms/search.c'
+    'integer/sort.c'
+    'integer/search.c'
+    'string/hash-table.c'
 )
 
 rm -rf build

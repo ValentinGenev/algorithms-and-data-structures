@@ -1,1 +1,0 @@
-int binarySearchInNumbers(int stack[], int needle, int left, int right);

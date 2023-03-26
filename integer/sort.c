@@ -1,7 +1,7 @@
-#include <stdio.h>
+#include "sort.h"
 #include <string.h>
 
-int *quickSort(int array[], int length, int pivot, int *target)
+int* quickSort(int array[], int length, int pivot, int* target)
 {
     if (length < 2) {
         return target;
