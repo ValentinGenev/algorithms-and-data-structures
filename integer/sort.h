@@ -1,1 +1,3 @@
-int* quickSort(int array[], int length, int pivot, int* target);
+#include <stddef.h>
+
+int* quickSort(int array[], size_t length, int pivot, int* target);

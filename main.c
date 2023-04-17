@@ -1,6 +1,6 @@
 #include "integer/search.h"
 #include "integer/sort.h"
-#include "string/hash-table.h"
+#include "integer/hash-table.h"
 #include <stdio.h>
 
 int main(void)
@@ -16,7 +16,7 @@ int main(void)
                              102, 132, 25, 6, 117, 140, 108, 122, 103, 104, 16,
                              78, 40, 110, 136, 83, 92, 144, 94, 8, 76, 137, 77,
                              5, 13, 141, 67, 48, 34, 147, 4, 35};
-    int numbersCount = sizeof unsortedNumbers / sizeof unsortedNumbers[0];
+    size_t numbersCount = sizeof unsortedNumbers / sizeof unsortedNumbers[0];
 
     int sortedNumbers[numbersCount];
     quickSort(unsortedNumbers, numbersCount, numbersCount / 2, sortedNumbers);
@@ -32,22 +32,12 @@ int main(void)
     printf("---------- binarySearch: %d at position %d\n", needle,
            binarySearch(sortedNumbers, needle, 0, numbersCount));
 
-    char *test[171];
-    add("asd", "test", test);
-    add("bsd", "test2", test);
-    char *result = get("asd", test);
-    char *result2 = get("bsd", test);
-    char *badResult = get("dsd", test);
-    if (badResult != NULL)
-    {
-        printf("The string is: %s\n", "asd");
-        printf("The string is: %s\n", badResult);
-    }
-    else
-    {
-        printf("The string is NULL\n");
-    }
-    // printf("\n---------- hash table: %s, %s, %s\n", result, result2, badResult);
+    int* intHashTable = iht_create();
+    iht_add("asd", 31, intHashTable);
+    iht_add("bsd", 24, intHashTable);
+    int value1 = iht_get("asd", intHashTable);
+    int value2 = iht_get("bsd", intHashTable);
+    printf("---------- hash table: %d, %d\n", value1, value2);
 
     return 0;
 }

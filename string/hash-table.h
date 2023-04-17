@@ -1,2 +1,2 @@
-char* add(char* key, char* value, char* hashTable[]);
-char* get(char* key, char* hashTable[]);
+char* sht_add(char* key, char* value, char** table);
+char* sht_get(char* key, char** table);

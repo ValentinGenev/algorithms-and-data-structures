@@ -1,7 +1,13 @@
 #include <string.h>
-#include <stdio.h>
+#include <stdlib.h>
+#include <stdio.h> // FIXME: remove me later
 
-int sht_hash(char* key)
+#define INT_SIZE 4
+#define SMALLEST_UF_CHAR 65
+#define BIGGEST_UTF_CHAR 122
+#define INITIAL_CAPACITY (BIGGEST_UTF_CHAR - SMALLEST_UF_CHAR)
+
+int iht_hash(char* key)
 {
     // English alphabet characters are represented by the
     // numbers from 65 to 122
@@ -23,22 +29,34 @@ int sht_hash(char* key)
         lettersNumRepresentation += key[2] - 0;
     }
 
+    printf("---------- hash: %d\n", lettersNumRepresentation - smallestNumberChar * numOfLetters);
+
     return lettersNumRepresentation - smallestNumberChar * numOfLetters;
 }
 
-char** sht_add(char* key, char* value, char** table)
+int* iht_create()
 {
-    int newIndex = sht_hash(key);
+    printf("--------- %d\n", INITIAL_CAPACITY);
+    int* table = calloc(INITIAL_CAPACITY, INITIAL_CAPACITY * INT_SIZE);
+    return table;
+}
+
+int* iht_add(char* key, int value, int* table)
+{
+    int newIndex = iht_hash(key);
     // TODO: if the new key is out of the array's size, double the size
     // TODO: add only if the key doesn't exist
     table[newIndex] = value;
     return table;
 }
 
-char* sht_get(char* key, char** table)
+int iht_get(char* key, int* table)
 {
-    int keyIndex = sht_hash(key);
-    char* value = table[keyIndex];
+    int value = table[iht_hash(key)];
     // TODO: find out how to handle non-existing keys
     return value;
+}
+
+void iht_destroy(int *table)
+{
 }
